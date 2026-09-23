@@ -33,3 +33,10 @@ https://lojaspringboot.onrender.com/
 ## Objetivo
 
 Projeto desenvolvido para praticar desenvolvimento de aplicações web utilizando **Java, Spring Boot, APIs REST, JPA/Hibernate e banco de dados MySQL**.
+---
+23/09/2026
+---
+**Luana Guidine**
+
+Estudante de Desenvolvimento de Sistemas
+Foco em Java, Desenvolvimento Web e Ciência da Computação
