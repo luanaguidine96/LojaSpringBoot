@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes — Sistema Café</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="cabecalho">
+    <h1>Cadastro</h1>
+</div>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="ClientePag.html" aria-current="page">Clientes</a>
+    <a href="ProdutosPag.html">Produtos</a>
+    <a href="Cadastrados.html">Produtos Ativos</a>
+    <a href="Ativos.html">Clientes Ativos</a>
+    <a href="login.html">Login</a>
+</nav>
+<div class="container">
+    <form id="formCliente">
+
+        <div class="campo">
+            <label for="nomi">Nome</label>
+            <input type="text" id="nomi" required>
+        </div>
+
+        <div class="campo">
+            <label for="saldo">Saldo</label>
+            <input type="number" id="saldo" step="0.01" required>
+        </div>
+        
+          <div class="campo">
+            <label for="senha">Senha</label>
+            <input type="text" id="senha" required>
+        </div>
+
+        <button type="submit" id="c">Cadastrar</button>
+
+    </form>
+</div>
+
+<script src="screpete.js"></script>
+</body>
+</html>

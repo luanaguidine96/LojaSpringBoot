@@ -1,0 +1,519 @@
+/* =========================================================
+   Sistema Café — folha de estilos
+   Paleta inspirada em grãos torrados, creme e papel kraft.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #F3EEE4;
+  --bg-soft: #EAE2D2;
+  --surface: #FFFFFF;
+  --ink: #2A211B;
+  --ink-soft: #6E6053;
+  --accent: #A9782C;
+  --accent-deep: #7C5620;
+  --accent-soft: #F1E4CC;
+  --line: #E3D9C8;
+  --success: #4C7A5B;
+  --success-bg: #E9F1EB;
+  --error: #AE4A34;
+  --error-bg: #F7E9E4;
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+
+  --shadow-sm: 0 1px 2px rgba(42, 33, 27, 0.05), 0 1px 1px rgba(42, 33, 27, 0.04);
+  --shadow-md: 0 8px 24px -8px rgba(42, 33, 27, 0.16), 0 2px 6px rgba(42, 33, 27, 0.06);
+  --shadow-lg: 0 20px 45px -18px rgba(42, 33, 27, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(169, 120, 44, 0.10), transparent 45%),
+    radial-gradient(circle at 88% 0%, rgba(124, 86, 32, 0.08), transparent 40%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.cabecalho {
+  padding: 3.25rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.cabecalho h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5vw, 2.9rem);
+  margin: 0;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.cabecalho h1::before {
+
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 0.65rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 3px rgba(124, 86, 32, 0.25));
+}
+
+.cabecalho h1::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  margin: 0.9rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+  opacity: 0.55;
+}
+
+/* ---------- Navegação ---------- */
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1rem 2.5rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease,
+    box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+nav a:hover {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+nav a.ativo,
+nav a[aria-current="page"] {
+  color: var(--surface);
+  background: linear-gradient(160deg, var(--accent), var(--accent-deep));
+  border-color: transparent;
+  box-shadow: 0 6px 16px -6px rgba(124, 86, 32, 0.55);
+}
+
+nav a:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Layout geral ---------- */
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.container > p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin: 0 0 1.25rem;
+}
+
+/* Home */
+
+.inicio {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  text-align: center;
+}
+
+.inicio p.intro {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 34ch;
+  margin: -0.5rem auto 2.5rem;
+}
+
+.atalhos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  text-align: left;
+}
+
+@media (max-width: 520px) {
+  .atalhos { grid-template-columns: 1fr; }
+}
+
+.atalho {
+  position: relative;
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.65rem 1.5rem;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.atalho::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-deep));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.atalho:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.atalho:hover::before {
+  opacity: 1;
+}
+
+.atalho .rotulo {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.atalho .desc {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+/* ---------- Cartão / formulário ---------- */
+
+form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-top: 0.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+form label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+form br { display: none; } /* espaçamento agora via .campo */
+
+.campo {
+  margin-bottom: 1.25rem;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="password"] {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="password"]:focus
+{
+  background: var(--surface);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(169, 120, 44, 0.15);
+  outline: none;
+}
+
+form input[type="text"]:hover,
+form input[type="number"]:hover,
+form input[type="password"]:hover 
+{
+  border-color: #cbbfa5;
+}
+
+form input:not(:last-child) {
+  margin-bottom: 0;
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.8rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--surface);
+  background: linear-gradient(160deg, var(--accent), var(--accent-deep));
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 8px 18px -8px rgba(124, 86, 32, 0.55);
+  transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+}
+
+button[type="submit"]:hover {
+  box-shadow: 0 10px 22px -8px rgba(124, 86, 32, 0.65);
+  transform: translateY(-1px);
+}
+
+button[type="submit"]:active {
+  transform: scale(0.99);
+}
+
+button[type="submit"]:disabled {
+  background: var(--line);
+  color: var(--ink-soft);
+  box-shadow: none;
+  cursor: default;
+}
+
+/* ---------- Listas (produtos / clientes) ---------- */
+
+.pag {
+  margin-top: 2rem;
+}
+
+.pag:empty { display: none; }
+
+.pag h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 0.75rem;
+}
+
+.item-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1.1rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.item-lista:hover {
+  border-color: var(--accent);
+  transform: translateX(2px);
+}
+
+.item-lista .nome-item { font-weight: 500; }
+.item-lista .detalhe-item { color: var(--ink-soft); font-size: 0.88rem; }
+
+.pag .vazio {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ---------- Cartões gerados via JavaScript ---------- */
+/* usados pelas divs #produtos (script.js) e #Cliente (Ativos.js) */
+
+#produtos,
+#Cliente {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4.5rem;
+}
+
+#produtos h2,
+#Cliente h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0 0 1.75rem;
+  text-align: center;
+  color: var(--ink);
+}
+
+/* grid: os cards ficam lado a lado a partir de telas médias */
+#produtos,
+#Cliente {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+#produtos h2,
+#Cliente h2 {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 640px) {
+  #produtos,
+  #Cliente {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 920px) {
+  #produtos,
+  #Cliente {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.produto,
+.Cliente {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.5rem 1.35rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.produto::before,
+.Cliente::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.produto:hover,
+.Cliente:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.produto:hover::before,
+.Cliente:hover::before {
+  opacity: 1;
+}
+
+.produto h3,
+.Cliente h3 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+  color: var(--ink);
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.produto p,
+.Cliente p {
+  margin: 0.3rem 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.produto p::before {
+
+  font-size: 0.85rem;
+  opacity: 0.55;
+}
+
+.Cliente p::before {
+
+  font-size: 0.85rem;
+  opacity: 0.55;
+}
+
+/* ---------- Botão "Comprar" nos cards de produto ---------- */
+
+.produto .comprar {
+  width: 100%;
+  margin-top: 0.9rem;
+  padding: 0.6rem 1rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--surface);
+  background: linear-gradient(160deg, var(--accent), var(--accent-deep));
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 0 6px 14px -8px rgba(124, 86, 32, 0.55);
+  transition: box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.produto .comprar:hover {
+  box-shadow: 0 8px 18px -8px rgba(124, 86, 32, 0.65);
+  transform: translateY(-1px);
+}
+
+.produto .comprar:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Saldo do cliente logado (ClientePag / Cadastrados) ---------- */
+
+#saldoCliente {
+  max-width: 920px;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+}
